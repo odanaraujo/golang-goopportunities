@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func errParamIsRequesd(name string, typ string) error {
+func ErrParamIsRequesd(name string, typ string) error {
 	return fmt.Errorf("param %s is required and should be %s", name, typ)
 }
 
@@ -25,27 +25,27 @@ func (request *OpeningRequest) Validate() error {
 	}
 
 	if strings.TrimSpace(request.Role) == "" {
-		return errParamIsRequesd("role", "string")
+		return ErrParamIsRequesd("role", "string")
 	}
 
 	if strings.TrimSpace(request.Company) == "" {
-		return errParamIsRequesd("company", "string")
+		return ErrParamIsRequesd("company", "string")
 	}
 
 	if strings.TrimSpace(request.Location) == "" {
-		return errParamIsRequesd("location", "string")
+		return ErrParamIsRequesd("location", "string")
 	}
 
 	if strings.TrimSpace(request.Link) == "" {
-		return errParamIsRequesd("link", "string")
+		return ErrParamIsRequesd("link", "string")
 	}
 
 	if request.Remote == nil {
-		return errParamIsRequesd("remote", "bool")
+		return ErrParamIsRequesd("remote", "bool")
 	}
 
 	if request.Salary <= 0 {
-		return errParamIsRequesd("salary", "float64")
+		return ErrParamIsRequesd("salary", "float64")
 	}
 
 	return nil

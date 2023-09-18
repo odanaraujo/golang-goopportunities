@@ -38,5 +38,5 @@ func CreateOpeningHandler(ctx *gin.Context) {
 		return
 	}
 
-	response.SendSuccess(ctx, "create-opening", opening)
+	response.SendSuccessOk(ctx, "create-opening", opening)
 }

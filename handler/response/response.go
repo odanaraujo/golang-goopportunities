@@ -13,7 +13,7 @@ func SendError(ctx *gin.Context, code int, message string) {
 	})
 }
 
-func SendSuccess(ctx *gin.Context, op string, data interface{}) {
+func SendSuccessOk(ctx *gin.Context, op string, data interface{}) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": fmt.Sprintf("operation from handler: %s successful", op),
 		"data":    data,
