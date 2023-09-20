@@ -11,7 +11,6 @@ import (
 
 func DeleteOpeningHandler(ctx *gin.Context) {
 	id := ctx.Param("id")
-	fmt.Printf(id)
 
 	if id == "" {
 		logger.Infof("id is empty")

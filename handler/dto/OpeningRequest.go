@@ -2,6 +2,7 @@ package dto
 
 import (
 	"fmt"
+	"github.com/odanaraujo/gopportunities/schemas"
 	"strings"
 )
 
@@ -49,4 +50,27 @@ func (request *OpeningRequest) Validate() error {
 	}
 
 	return nil
+}
+
+func (request *OpeningRequest) ToOpening(opening schemas.Opening) schemas.Opening {
+	
+	if request.Role != "" {
+		opening.Role = request.Role
+	}
+	if request.Company != "" {
+		opening.Company = request.Company
+	}
+	if request.Location != "" {
+		opening.Location = request.Location
+	}
+	if request.Link != "" {
+		opening.Link = request.Link
+	}
+	if request.Remote != nil {
+		opening.Remote = *request.Remote
+	}
+	if request.Salary > 0 {
+		opening.Salary = request.Salary
+	}
+	return opening
 }
