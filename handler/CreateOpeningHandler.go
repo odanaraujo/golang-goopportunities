@@ -8,6 +8,15 @@ import (
 	"net/http"
 )
 
+// @basePath /api/v1
+// @Summary Create a new opening
+// @Description Create a new opening
+// @Tags openings
+// @Accept  json
+// @Produce  json
+// @Param opening body dto.OpeningRequest{} true "Request body"
+// @Success 200 {object} response.SuccessResponse
+// @Router /opening [post]
 func CreateOpeningHandler(ctx *gin.Context) {
 	openingRequest := dto.OpeningRequest{}
 

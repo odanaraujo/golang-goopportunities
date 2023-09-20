@@ -8,6 +8,14 @@ import (
 	"net/http"
 )
 
+// @basePath /api/v1
+// @Summary List all openings
+// @Description List all openings
+// @Tags openings
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} []response.SuccessResponse
+// @Router /openings [get]
 func ListOpeningsHandler(ctx *gin.Context) {
 
 	openings := []schemas.Opening{}

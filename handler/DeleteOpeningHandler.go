@@ -9,6 +9,15 @@ import (
 	"net/http"
 )
 
+// @basePath /api/v1
+// @Summary Delete a opening
+// @Description Delete a opening
+// @Tags openings
+// @Accept  json
+// @Produce  json
+// @Param id path string true "Opening ID"
+// @Success 204
+// @Router /opening/{id} [delete]
 func DeleteOpeningHandler(ctx *gin.Context) {
 	id := ctx.Param("id")
 

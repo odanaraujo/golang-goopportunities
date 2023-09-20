@@ -1,0 +1,154 @@
+definitions:
+  dto.OpeningRequest:
+    properties:
+      company:
+        type: string
+      link:
+        type: string
+      location:
+        type: string
+      remote:
+        type: boolean
+      role:
+        type: string
+      salary:
+        type: number
+    type: object
+  response.SuccessResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
+  schemas.OpeningResponse:
+    properties:
+      company:
+        type: string
+      create_at:
+        type: string
+      delete_at:
+        type: string
+      id:
+        type: integer
+      link:
+        type: string
+      location:
+        type: string
+      remote:
+        type: boolean
+      role:
+        type: string
+      salary:
+        type: number
+      update_at:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /opening:
+    post:
+      consumes:
+      - application/json
+      description: Create a new opening
+      parameters:
+      - description: Request body
+        in: body
+        name: opening
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OpeningRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SuccessResponse'
+      summary: Create a new opening
+      tags:
+      - openings
+  /opening/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a opening
+      parameters:
+      - description: Opening ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a opening
+      tags:
+      - openings
+    get:
+      consumes:
+      - application/json
+      description: get a opening
+      parameters:
+      - description: Opening ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SuccessResponse'
+      summary: get a opening
+      tags:
+      - openings
+    put:
+      consumes:
+      - application/json
+      description: Update a opening
+      parameters:
+      - description: Opening ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Request body
+        in: body
+        name: opening
+        required: true
+        schema:
+          $ref: '#/definitions/dto.OpeningRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SuccessResponse'
+      summary: Update a opening
+      tags:
+      - openings
+  /openings:
+    get:
+      consumes:
+      - application/json
+      description: List all openings
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/response.SuccessResponse'
+            type: array
+      summary: List all openings
+      tags:
+      - openings
+swagger: "2.0"

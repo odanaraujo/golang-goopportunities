@@ -8,6 +8,15 @@ import (
 	"net/http"
 )
 
+// @basePath /api/v1
+// @Summary get a opening
+// @Description get a opening
+// @Tags openings
+// @Accept  json
+// @Produce  json
+// @Param id path string true "Opening ID"
+// @Success 200 {object} response.SuccessResponse
+// @Router /opening/{id} [get]
 func ShowOpeningHandler(ctx *gin.Context) {
 	id := ctx.Param("id")
 

@@ -9,6 +9,16 @@ import (
 	"net/http"
 )
 
+// @basePath /api/v1
+// @Summary Update a opening
+// @Description Update a opening
+// @Tags openings
+// @Accept  json
+// @Produce  json
+// @Param id path string true "Opening ID"
+// @Param opening body dto.OpeningRequest{} true "Request body"
+// @Success 200 {object} response.SuccessResponse
+// @Router /opening/{id} [put]
 func UpdateOpeningHandler(ctx *gin.Context) {
 
 	id := ctx.Param("id")
