@@ -18,8 +18,8 @@ import (
 // @Param id path string true "Opening ID"
 // @Param opening body dto.OpeningRequest{} true "Request body"
 // @Success 200 {object} response.SuccessResponse
-// Failure 400 {object} response.ErrorResponse
-// Failure 500 {object} response.ErrorResponse
+// @Failure 400 {object} response.ErrorResponse
+// @Failure 500 {object} response.ErrorResponse
 // @Router /opening/{id} [put]
 func UpdateOpeningHandler(ctx *gin.Context) {
 

@@ -16,8 +16,8 @@ import (
 // @Produce  json
 // @Param opening body dto.OpeningRequest{} true "Request body"
 // @Success 200 {object} response.SuccessResponse
-// Failure 400 {object} response.ErrorResponse
-// Failure 500 {object} response.ErrorResponse
+// @Failure 400 {object} response.ErrorResponse
+// @Failure 500 {object} response.ErrorResponse
 // @Router /opening [post]
 func CreateOpeningHandler(ctx *gin.Context) {
 	openingRequest := dto.OpeningRequest{}

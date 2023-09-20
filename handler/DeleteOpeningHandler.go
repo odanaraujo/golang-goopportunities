@@ -17,8 +17,8 @@ import (
 // @Produce  json
 // @Param id path string true "Opening ID"
 // @Success 204
-// Failure 400 {object} response.ErrorResponse
-// Failure 500 {object} response.ErrorResponse
+// @Failure 400 {object} response.ErrorResponse
+// @Failure 500 {object} response.ErrorResponse
 // @Router /opening/{id} [delete]
 func DeleteOpeningHandler(ctx *gin.Context) {
 	id := ctx.Param("id")
