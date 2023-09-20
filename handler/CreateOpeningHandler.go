@@ -16,6 +16,8 @@ import (
 // @Produce  json
 // @Param opening body dto.OpeningRequest{} true "Request body"
 // @Success 200 {object} response.SuccessResponse
+// Failure 400 {object} response.ErrorResponse
+// Failure 500 {object} response.ErrorResponse
 // @Router /opening [post]
 func CreateOpeningHandler(ctx *gin.Context) {
 	openingRequest := dto.OpeningRequest{}
@@ -43,7 +45,7 @@ func CreateOpeningHandler(ctx *gin.Context) {
 
 	if err := db.Create(&opening).Error; err != nil {
 		logger.Errorf("Error creating opening: %v", err.Error())
-		response.SendError(ctx, http.StatusBadRequest, err.Error())
+		response.SendError(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 

@@ -15,6 +15,8 @@ import (
 // @Accept  json
 // @Produce  json
 // @Success 200 {object} []response.SuccessResponse
+// Failure 400 {object} response.ErrorResponse
+// Failure 500 {object} response.ErrorResponse
 // @Router /openings [get]
 func ListOpeningsHandler(ctx *gin.Context) {
 
@@ -22,7 +24,7 @@ func ListOpeningsHandler(ctx *gin.Context) {
 
 	if err := db.Find(&openings).Error; err != nil {
 		logger.Errorf("Error on find openings: %v", err)
-		response.SendError(ctx, http.StatusBadRequest, fmt.Sprintf("Error on find openings: %v", err))
+		response.SendError(ctx, http.StatusInternalServerError, fmt.Sprintf("Error on find openings: %v", err))
 		return
 	}
 

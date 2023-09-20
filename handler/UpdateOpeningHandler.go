@@ -18,6 +18,8 @@ import (
 // @Param id path string true "Opening ID"
 // @Param opening body dto.OpeningRequest{} true "Request body"
 // @Success 200 {object} response.SuccessResponse
+// Failure 400 {object} response.ErrorResponse
+// Failure 500 {object} response.ErrorResponse
 // @Router /opening/{id} [put]
 func UpdateOpeningHandler(ctx *gin.Context) {
 
@@ -41,7 +43,7 @@ func UpdateOpeningHandler(ctx *gin.Context) {
 
 	if err := db.First(&opening, id).Error; err != nil {
 		logger.Errorf("opening with id %s not found", id)
-		response.SendError(ctx, http.StatusNotFound, fmt.Sprintf("opening with id %s not found", id))
+		response.SendError(ctx, http.StatusInternalServerError, fmt.Sprintf("opening with id %s not found", id))
 		return
 	}
 
